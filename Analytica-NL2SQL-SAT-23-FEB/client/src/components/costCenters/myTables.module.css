@@ -1,0 +1,486 @@
+/* Overall container (light background) */
+.tableContainerWhite {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  padding: 20px;
+  background-color: var(--tableContainerWhite-bg);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
+}
+
+.tableContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  padding: 20px;
+  background-color: var(--tableContainer-bg);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
+}
+
+/* AG Grid wrapper with fade-in animation */
+.agGridWrapper {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* Make sure grid wrapper background matches its container in dark mode */
+:global(html.dark-mode) .agGridWrapper {
+  background-color: var(--gray-200) !important;
+}
+
+/* Make sure the core AG Grid element background matches in dark mode */
+:global(html.dark-mode) :global(.ag-theme-alpine),
+:global(html.dark-mode) :global(.ag-theme-alpine) :global(.ag-root-wrapper) {
+  background-color: var(--gray-200) !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Editable cells */
+.lightGreyCell.ag-cell {
+  background-color: var(--gray-100) !important;
+}
+
+/* Row styles */
+.headingRow {
+  background-color: var(--black) !important;
+  font-weight: bold;
+  color: var(--white) !important;
+}
+:global(html.dark-mode) .headingRow {
+  background-color: var(--gray-500) !important;
+}
+
+/* Special case for the top row in dark mode - override with highest specificity */
+:global(html.dark-mode) :global(.ag-theme-alpine) .headingRow.ag-row-first,
+:global(html.dark-mode) :global(.ag-theme-alpine) .headingRow[aria-rowindex="1"] {
+  background-color: var(--tableContainer-bg) !important;
+}
+
+/* Cells in the top row should also have the background color */
+:global(html.dark-mode) :global(.ag-theme-alpine) .headingRow.ag-row-first .ag-cell,
+:global(html.dark-mode) :global(.ag-theme-alpine) .headingRow[aria-rowindex="1"] .ag-cell {
+  background-color: var(--tableContainer-bg) !important;
+}
+
+/* Ensure all cells in these specific header rows have light grey background in dark mode */
+:global(html.dark-mode) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Construction Costs")),
+:global(html.dark-mode) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Contingency")),
+:global(html.dark-mode) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Professional Fees")),
+:global(html.dark-mode) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Land Acquisition Costs")),
+:global(html.dark-mode) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Land Purchase Cost")),
+:global(html.dark-mode) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Statutory Fees")),
+:global(html.dark-mode) :global(.ag-theme-alpine) [row-index="0"] {
+  background-color: var(--gray-500) !important;
+}
+
+/* Ensure all cells in these specific header rows have black background and white text in light mode */
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Construction Costs")),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Contingency")),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Professional Fees")),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Land Acquisition Costs")),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Land Purchase Cost")),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Statutory Fees")),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) [row-index="0"] {
+  background-color: black !important;
+  color: white !important;
+}
+
+/* Ensure all cells within these rows also have white text in light mode */
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Construction Costs")) .ag-cell,
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Contingency")) .ag-cell,
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Professional Fees")) .ag-cell,
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Land Acquisition Costs")) .ag-cell,
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Land Purchase Cost")) .ag-cell,
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Statutory Fees")) .ag-cell,
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) [row-index="0"] .ag-cell {
+  color: white !important;
+}
+
+/* Target the div inside cells specifically */
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Construction Costs")) .ag-cell div,
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Contingency")) .ag-cell div,
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Professional Fees")) .ag-cell div,
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Land Acquisition Costs")) .ag-cell div,
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Land Purchase Cost")) .ag-cell div,
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row:has(.ag-cell:contains("Statutory Fees")) .ag-cell div,
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) [row-index="0"] .ag-cell div {
+  color: white !important;
+  fill: white !important;
+  -webkit-text-fill-color: white !important;
+}
+
+/* Top row reverted to background color */
+:global(html.dark-mode) :global(.ag-theme-alpine) .ag-row-first {
+  background-color: var(--tableContainer-bg) !important;
+}
+
+/* Ensure cells in the top row also have the background color */
+:global(html.dark-mode) :global(.ag-theme-alpine) .ag-row-first .ag-cell {
+  background-color: var(--tableContainer-bg) !important;
+}
+
+/* Normal row styling */
+.normalRow {
+  background-color: var(--tableContainerWhite-bg) !important;
+  color: var(--gray-500) !important;
+  font-weight: 300;
+}
+
+/* Dark mode normal row */
+:global(html.dark-mode) .normalRow {
+  color: var(--white) !important;
+  font-weight: 300;
+}
+
+/* Total row styling */
+.totalRow {
+  background-color: var(--tableContainerWhite-bg) !important;
+  color: var(--text-color);
+  font-weight: bold;
+  pointer-events: none;
+}
+.totalRow .ag-cell {
+  border-top: 2px solid var(--black) !important;
+}
+
+/* Dark mode total row */
+:global(html.dark-mode) .totalRow {
+  color: var(--white) !important;
+}
+
+/* Custom header and grid themes */
+:global(.customPerimeterTheme) {
+  --ag-border-color: transparent !important;
+}
+:global(.customHeaderTheme) {
+  --ag-header-background-color: var(--tableContainerWhite-bg) !important;
+  --ag-header-foreground-color: var(--text-color) !important;
+}
+:global(html.dark-mode) :global(.ag-theme-alpine .ag-header) {
+  background-color: var(--tableContainer-bg) !important;
+}
+:global(html.dark-mode) :global(.ag-theme-alpine .ag-header-cell),
+:global(html.dark-mode) :global(.ag-theme-alpine .ag-header-group-cell) {
+  background-color: var(--tableContainer-bg) !important;
+}
+:global(.redRowBordersTheme) {
+  --ag-row-border-color: var(--gray-400) !important;
+  --ag-row-border-width: 0.5px !important;
+  --ag-row-border-style: solid !important;
+}
+
+/* Fix for top border of first row */
+:global(.ag-theme-alpine) :global(.ag-row-first) {
+  border-top-color: var(--tableContainerWhite-bg) !important;
+}
+:global(html.dark-mode) :global(.ag-theme-alpine) :global(.ag-row-first) {
+  border-top-color: var(--gray-500) !important;
+  border-top-width: 0 !important;
+  border-top: 0 none !important;
+}
+
+/* Additional fix for top border in dark mode */
+:global(html.dark-mode) :global(.ag-theme-alpine) :global(.ag-header-row-column),
+:global(html.dark-mode) :global(.ag-theme-alpine) :global(.ag-header-row),
+:global(html.dark-mode) :global(.ag-theme-alpine) :global(.ag-header),
+:global(html.dark-mode) :global(.ag-theme-alpine) :global(.ag-header-viewport),
+:global(html.dark-mode) :global(.ag-theme-alpine) :global(.ag-header-container) {
+  border-bottom: none !important;
+  border-bottom-width: 0 !important;
+  border-bottom-color: transparent !important;
+}
+
+/* Comprehensive border fix */
+:global(html.dark-mode) :global(.ag-theme-alpine) {
+  --ag-borders: none !important;
+  --ag-borders-critical: none !important;
+  --ag-header-column-separator-display: none !important;
+  --ag-header-column-resize-handle-display: none !important;
+}
+
+/* Remove header border in dark mode */
+:global(html.dark-mode) :global(.ag-theme-alpine) :global(.ag-header-container):after,
+:global(html.dark-mode) :global(.ag-theme-alpine) :global(.ag-header):after {
+  display: none !important;
+  border: none !important;
+  height: 0 !important;
+  content: none !important;
+}
+
+/* AG Grid Border Overrides */
+:global(.ag-theme-alpine) {
+  border: none !important;
+  box-shadow: none !important;
+}
+:global(.ag-theme-alpine .ag-root-wrapper),
+:global(.ag-theme-alpine .ag-root-wrapper-container),
+:global(.ag-theme-alpine .ag-header),
+:global(.ag-theme-alpine .ag-cell) {
+  border: none !important;
+  box-shadow: none !important;
+  --ag-border-color: transparent !important;
+}
+
+/* Left Nav Input styling */
+.leftNavInput,
+input.leftNavInput,
+select.leftNavInput {
+  border: 0.5px solid var(--ag-row-border-color, var(--gray-400)) !important;
+}
+
+:global(html.dark-mode) .leftNavInput,
+:global(html.dark-mode) input.leftNavInput,
+:global(html.dark-mode) select.leftNavInput {
+  border: 0.5px solid var(--ag-row-border-color, var(--gray-500)) !important;
+  border-right: 0.5px solid var(--ag-row-border-color, var(--gray-500)) !important;
+}
+
+input.leftNavInput:focus,
+select.leftNavInput:focus {
+  border-color: var(--ag-row-border-color, var(--gray-400)) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+:global(html.dark-mode) input.leftNavInput:focus,
+:global(html.dark-mode) select.leftNavInput:focus {
+  border-color: var(--ag-row-border-color, var(--gray-500)) !important;
+  border-right-width: 0.5px !important;
+}
+
+/* Left Nav Container styling */
+:global(.leftNavContainer) {
+  border-right: 1px solid var(--ag-row-border-color, var(--gray-400)) !important;
+}
+
+:global(html.dark-mode) :global(.leftNavContainer) {
+  border-right: 0.5px solid var(--ag-row-border-color, var(--gray-500)) !important;
+}
+
+:global(html.dark-mode) :global(.ag-theme-alpine .ag-header) {
+  background-color: var(--tableContainer-bg) !important;
+}
+
+:global(html.dark-mode) :global(.ag-theme-alpine .ag-header-cell),
+:global(html.dark-mode) :global(.ag-theme-alpine .ag-header-group-cell) {
+  background-color: var(--tableContainer-bg) !important;
+}
+
+:global(.redRowBordersTheme) {
+  --ag-row-border-color: var(--gray-400) !important;
+  --ag-row-border-width: 0.5px !important;
+  --ag-row-border-style: solid !important;
+}
+
+/* Fix for top border of first row */
+:global(.ag-theme-alpine) :global(.ag-row-first) {
+  border-top-color: var(--tableContainerWhite-bg) !important;
+}
+:global(html.dark-mode) :global(.ag-theme-alpine) :global(.ag-row-first) {
+  border-top-color: var(--gray-500) !important;
+  border-top-width: 0 !important;
+  border-top: 0 none !important;
+}
+
+/* Additional fixes and miscellaneous styles remain unchanged */
+.popupMenu {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-width: 120px;
+  z-index: 9999;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-size: 0.75rem;
+  color: var(--gray-500);
+}
+
+.menuItem {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: var(--gray-500);
+}
+
+.menuItem:hover {
+  background-color: #f0f0f0;
+}
+
+/* Toggle switch styling */
+.toggleSwitch {
+  position: relative;
+  display: inline-block;
+  width: 1.5rem;
+  height: 0.75rem;
+  background-color: var(--gray-300);
+  border-radius: 0.75rem;
+  cursor: pointer;
+}
+.toggleSwitchKnob {
+  position: absolute;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: #fff;
+  top: 0.075rem;
+  left: 0.075rem;
+  transition: transform 0.4s ease;
+}
+.toggleSwitch--yes {
+  background-color: green;
+}
+.toggleSwitch--yes .toggleSwitchKnob {
+  transform: translateX(0.75rem);
+}
+
+/* CELLS */
+:global(.ag-cell-focus) {
+  outline: 3px solid green !important;
+  outline-offset: -2px;
+}
+
+:global(.ag-cell.ag-cell-not-inline-editing.ag-cell-focus) {
+  outline: 2px solid green !important;
+  outline-offset: -2px;
+}
+
+:global(.ag-cell-focus) {
+  outline: 3px solid green !important;
+  outline-offset: -2px;
+}
+
+/* Cell editor and input styling */
+:global(.ag-cell-edit-input),
+:global(.ag-input-field-input),
+:global(.ag-theme-alpine .ag-cell-editor input),
+:global(.ag-theme-alpine .ag-cell-editor input:focus),
+:global(.ag-theme-alpine input.ag-cell-edit-input:focus) {
+  border: none !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  -webkit-focus-ring-color: transparent !important;
+}
+
+/* Picker field styling */
+:global(.ag-theme-alpine .ag-picker-field-wrapper),
+:global(.ag-theme-alpine .ag-picker-field-wrapper:focus),
+:global(.ag-theme-alpine .ag-picker-field-wrapper:focus-visible),
+:global(.ag-theme-alpine .ag-picker-field-display) {
+  border: none !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-appearance: none !important;
+}
+
+/* Dark mode specific row border styling to match header color */
+:global(html.dark-mode) :global(.redRowBordersTheme),
+:global(html.dark-mode) :global(.ag-theme-alpine) {
+  --ag-row-border-color: var(--gray-500) !important;
+}
+
+/* Automatic forecast cashflow styling - matching column 1 children gray color */
+:global(.ag-theme-alpine) :global(.forecast-cell) {
+  color: var(--gray-500) !important;
+  font-weight: 400;
+}
+
+/* Dark mode override for forecast cells to match other text */
+:global(html.dark-mode) :global(.ag-theme-alpine) :global(.forecast-cell) {
+  color: var(--white) !important;
+  font-weight: 400;
+}
+
+/* Manual cashflow numbers styling - only for cells with monthly_manual_overrides */
+:global(.ag-theme-alpine) :global(.manual-override-cell) {
+  color: orange !important;
+  font-weight: 400 !important;
+  -webkit-text-fill-color: orange !important;
+}
+
+/* Ensure our manual override styles ALWAYS take precedence */
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.manual-override-cell),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.manual-override-cell) *,
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row .ag-cell.manual-override-cell,
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) .ag-row .ag-cell.manual-override-cell * {
+  color: orange !important;
+  -webkit-text-fill-color: orange !important;
+  fill: orange !important;
+}
+
+/* Stronger priority manual override cells - THE FINAL WORD ON ORANGE */
+:global(.manual-override-cell),
+:global(.manual-override-cell) *,
+:global(.ag-theme-alpine .manual-override-cell),
+:global(.ag-theme-alpine) :global(.manual-override-cell),
+:global(.ag-theme-alpine .manual-override-cell) *,
+:global(.ag-theme-alpine .ag-cell.manual-override-cell),
+:global(.ag-row .ag-cell.manual-override-cell),
+:global(.ag-row) :global(.manual-override-cell),
+:global([role="gridcell"].manual-override-cell) {
+  color: orange !important;
+  -webkit-text-fill-color: orange !important; 
+  fill: orange !important;
+  stroke: none !important;
+  text-shadow: none !important;
+}
+
+/* PARENT ROWS - Ensure white text in light theme */
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.parent-row),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.parent-category-row),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.headingRow),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.ag-row.parent-row),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.ag-row.parent-category-row),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.ag-row.headingRow),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.ag-row[style*="background-color: black"]),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.ag-row[style*="background: black"]) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+  background-color: black !important;
+}
+
+/* Ensure cells inside parent rows also have white text */
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.parent-row) *:not(.manual-override-cell):not(.manual-override-cell *),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.parent-category-row) *:not(.manual-override-cell):not(.manual-override-cell *),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.headingRow) *:not(.manual-override-cell):not(.manual-override-cell *),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.ag-row.parent-row) *:not(.manual-override-cell):not(.manual-override-cell *),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.ag-row.parent-category-row) *:not(.manual-override-cell):not(.manual-override-cell *),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.ag-row.headingRow) *:not(.manual-override-cell):not(.manual-override-cell *),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.ag-row[style*="background-color: black"]) *:not(.manual-override-cell):not(.manual-override-cell *),
+:global(html:not(.dark-mode)) :global(.ag-theme-alpine) :global(.ag-row[style*="background: black"]) *:not(.manual-override-cell):not(.manual-override-cell *) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Ensure child rows have font-weight 300 in both light and dark themes */
+:global(.ag-theme-alpine) :global(.ag-row):not(.headingRow):not(.totalRow) {
+  font-weight: 400 !important;
+}
+
+:global(html.dark-mode) :global(.ag-theme-alpine) :global(.ag-row):not(.headingRow):not(.totalRow) {
+  font-weight: 400 !important;
+}
+
+/* All other cells will retain their default styling */

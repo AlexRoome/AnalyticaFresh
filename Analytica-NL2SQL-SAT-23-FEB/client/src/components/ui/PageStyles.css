@@ -1,0 +1,208 @@
+/* ----------------------------------------
+   CUSTOM BACKGROUNDS & FONTS
+---------------------------------------- */
+.sidebarMain {
+  background-color: var(--black);
+  font-size: 0.8rem;
+  font-weight: normal;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0rem 0.5rem 0.5rem;
+}
+
+/* For the top link (the eyeglasses) */
+.sidebarTopLink {
+  font-size: 0.8rem;
+  font-weight: normal;
+  margin-left: 0.2rem;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  padding: 0 0.5rem;
+  cursor: pointer;
+  transition: color 0.7s ease-in-out !important;
+}
+
+/* Removed the gray hover background for top link */
+.sidebarTopLink:hover {
+  background-color: transparent; /* no gray background */
+}
+
+/* On hover, change the icon color to white */
+.sidebarTopLink:hover .sidebarTopLinkIcon {
+  color: white;
+  transition: color 0.7s ease-in-out !important;
+}
+
+/* spacing between icon and text */
+.sidebarTopLinkIcon {
+  margin-right: 0.6rem;
+  font-size: 0.8rem;
+  transition: color 0.7s ease-in-out !important;
+  flex-shrink: 0;
+}
+
+/* ----------------------------------------
+   SIDEBAR CONTAINER STYLES
+---------------------------------------- */
+.sidebarExpanded {
+  background-color: var(--black);
+  transition: width 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.sidebarCollapsed {
+  background-color: transparent;
+  transition: width 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+/* ----------------------------------------
+   TOP BAR (HEADER) STYLES
+---------------------------------------- */
+.sidebar-topbar-expanded,
+.sidebar-topbar-collapsed {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.sidebar-toggle-btn {
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+/* ----------------------------------------
+   DROPDOWN HEADINGS
+---------------------------------------- */
+.sidebar-dropdownHeader {
+  background-color: transparent;
+  font-size: 0.8rem;
+  font-weight: normal;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.15rem 0.4rem;
+  margin-bottom: 0.1rem;
+  border-radius: 4px;
+}
+
+.sidebar-dropdownHeader:hover {
+  background-color: var(--gray-700);
+}
+
+/* Apply bold only if open */
+.sidebar-dropdownHeaderOpen {
+  font-weight: bold;
+}
+
+/* Fix arrow width so rotating doesn't shift text */
+.sidebar-heading-arrow {
+  display: inline-block;
+  width: 1rem;
+  text-align: center;
+  margin-right: 0.3rem;
+  font-weight: normal;
+}
+
+/* ----------------------------------------
+   NO-FADE DROPDOWN (text won't jump)
+---------------------------------------- */
+.sidebar-dropdownContents {
+  font-size: 0.8rem;
+  text-align: left;
+  overflow: hidden; 
+  max-height: 0;
+  margin: 0.15rem 0;
+  padding-left: 1rem;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.sidebar-dropdownContentsOpen {
+  font-size: 0.8rem;
+  text-align: left;
+  overflow: hidden;
+  max-height: 600px;
+  margin: 0.15rem 0;
+  padding-left: 1rem;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.sidebar-dropdownContentsRow {
+  margin-bottom: 0.1rem;
+}
+
+/* Optional container for headings */
+.sidebarHeadings {
+  padding: 2rem 0rem 0rem 0rem;
+}
+
+.headerTitle {
+  padding-left: 1rem;
+  font-size: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Search icon bounce/rotate */
+.searchIcon {
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transform-origin: center; 
+}
+
+.searchIcon:hover {
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* ----------------------------------------
+   LINK STYLING FOR .dashboardLinks
+---------------------------------------- */
+.dashboardLinks a,
+.dashboardLinks a:visited {
+  color: var(--white);
+  text-decoration: none;
+
+  /* Add a transition for color (and/or background-color) */
+  transition: color 0.3s ease-in-out;
+}
+
+.dashboardLinks a:hover {
+  /* Hover color change */
+  color: var(--gray-300);
+}
+
+
+.dashboardNav {
+  border-bottom: none !important;
+  box-shadow: none !important;
+  padding-left: 5.0rem;
+  padding-right: 5.0rem;
+}
+
+/* Add slow transition for menu navigation items */
+.sidebarMain div[style*="padding: 1rem"] div[style*="cursor: pointer"],
+.sidebarMain div[style*="cursor: pointer"],
+.sidebar-dropdownContentsRow,
+.sidebar-nav-item {
+  transition: color 0.7s ease-in-out !important;
+}
+
+/* Direct styling for sidebar navigation items */
+.sidebar-nav-item {
+  color: var(--gray-300) !important;
+  transition: color 0.7s ease-in-out !important;
+}
+
+.sidebar-nav-item:hover {
+  color: var(--gray-100) !important;
+}
+
+

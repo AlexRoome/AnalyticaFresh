@@ -1,0 +1,253 @@
+/* 
+  Root container: 
+  - Dark background
+  - White text
+  - Vertical stacking with flex-direction: column
+*/
+.homeRoot {
+  background-color: #0c0c0c; 
+  color: #fff;
+  min-height: 100vh; 
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+
+  /* Add gap if you want extra spacing between each major section:
+     gap: 4rem; 
+     Or handle spacing with each section's own padding/margins. */
+}
+
+/* 1) HERO SECTION */
+.homeHero {
+  margin: 0 auto;
+  text-align: center;
+  /* Large padding top and bottom for vertical space */
+  padding: 8rem 2rem 6rem; 
+}
+
+.homeHeroTitle {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.homeHeroSubtitle {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 3rem; /* space below subtitle */
+  line-height: 1.4;
+  color: #ddd;
+}
+
+/* The container for input, chips, and buttons */
+.heroInputContainer {
+  background-color: #1c1c1c;
+  display: flex;
+  flex-direction: column; /* vertical column */
+  align-items: center;
+  gap: 1rem;
+  border-radius: 8px;
+  padding: 2rem; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto; 
+}
+
+.heroInput {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background-color: #2c2c2c;
+  color: #fff;
+}
+
+/* Chips container */
+.heroChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  background-color: #2c2c2c;
+  padding: 0.3rem 0.8rem;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.chip:hover {
+  background-color: #3c3c3c;
+}
+
+/* Row with Attach / Start Building */
+.heroBtnRow {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.heroBtnAttach {
+  background-color: transparent;
+  border: 1px solid #555;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  transition: background-color 0.2s ease;
+}
+
+.heroBtnAttach:hover {
+  background-color: #2c2c2c;
+}
+
+.heroBtnPrimary {
+  background-color: #ff6e00;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.heroBtnPrimary:hover {
+  background-color: #e65e00;
+}
+
+/* 2) WHY ANALYTICA SECTION */
+.whyAnalyticaSection {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 6rem 2rem; 
+}
+
+.whyAnalyticaSection h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.whyAnalyticaSection p {
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  color: #ccc;
+}
+
+.whyAnalyticaSection ul {
+  list-style: none;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.whyAnalyticaSection li {
+  margin-bottom: 0.6rem;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+/* 3) USE CASES / FEATURES SECTION */
+.useCasesSection {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 6rem 2rem; 
+}
+
+.useCasesSection h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+/* Use a single-column stack rather than a grid */
+.useCasesGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.useCaseCard {
+  background-color: #1c1c1c;
+  border-radius: 6px;
+  padding: 1.5rem;
+  text-align: left;
+  color: #ccc;
+  transition: background-color 0.2s ease;
+}
+
+.useCaseCard:hover {
+  background-color: #2c2c2c;
+}
+
+.useCaseCard h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+  color: #fff;
+}
+
+.useCaseCard p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* 4) CALL-TO-ACTION SECTION */
+.ctaSection {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 6rem 2rem; 
+}
+
+.ctaSection h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.ctaSection p {
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  color: #ccc;
+}
+
+.ctaButton {
+  background-color: #ff6e00;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.8rem 1.4rem;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.ctaButton:hover {
+  background-color: #e65e00;
+}
+
+/* 5) FOOTER */
+.homeFooter {
+  text-align: center;
+  padding: 3rem 0;
+  color: #888;
+  font-size: 0.85rem;
+  margin-top: auto; 
+}

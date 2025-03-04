@@ -1,0 +1,271 @@
+/* Root container: black background, white text, entire page */
+.dashboardContainer {
+  background-color: #000;
+  color: #fff;
+  /* Enough height so user must scroll to even reach the tables */
+  min-height: 300vh;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+}
+
+/* TOP NAV */
+.dashboardNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #000;
+  border-bottom: 1px solid #222;
+}
+
+.dashboardBrand {
+  font-size: 1.0rem;
+  font-weight: bold;
+}
+
+.dashboardLinks {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboardLinks li {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.dashboardLinks li:hover {
+  color: #ccc;
+}
+
+.dashboardActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dashboardActions input {
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background-color: #222;
+  color: #fff;
+}
+
+/* MAIN: top sections (cards) are near top, 
+   user sees them on load
+*/
+.dashboardMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  padding: 10rem;
+}
+
+/* Each top section (Management / Feasibility) */
+.dashboardSection {
+  margin-bottom: 10rem;
+}
+
+.dashboardSection h2 {
+  font-size: 1.5rem;
+  font-weight: 200; /* or 700, etc. */
+  margin-bottom: 1.5rem;
+}
+
+/* GRID OF CARDS */
+.cardGrid {
+  display: flex;        /* Use flex layout instead of grid */
+  flex-wrap: nowrap;    /* Prevent wrapping onto new lines */
+  overflow-x: auto;     /* Allow horizontal scrolling if needed */
+  gap: 1rem;            /* Keep same spacing between cards */
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+
+.cardGrid::-webkit-scrollbar {
+  display: none;
+}
+
+/* White card with black text, min height 280px */
+.projectCard {
+  flex: 0 0 auto;       /* Force each card to remain its own width in one row */
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 1rem;
+  min-height: 400px;
+  min-width: 300px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.projectCardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  height: 100%;
+}
+
+.projectAddress {
+  font-weight: 600;
+}
+
+.projectDate {
+  margin-top: auto;
+  font-size: 0.8rem;
+  color: var(--white);
+}
+
+/* 
+   FIRST TABLE: horizontally infinite
+   Move it far down with margin-top so user won't see it on load 
+*/
+.apartmentTableSection {
+  margin-top: 20rem; /* user must scroll to see this table at all */
+  padding: 10rem;  
+  padding-bottom: 2rem;
+}
+
+.apartmentTableSection h2 {
+  font-size: 1.5rem;
+  font-weight: 200; /* or 700, etc. */
+  margin-bottom: 1.5rem;
+}
+
+/* Horizontal scroll container (no perimeter border) */
+.horizontalScrollWrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* 
+   Let the table expand as needed:
+   width: max-content so columns won't compress
+   white-space: nowrap to avoid wrapping text
+*/
+.apartmentTable {
+  table-layout: auto;
+  width: max-content; 
+  white-space: nowrap; 
+  border-collapse: collapse;
+  background-color: #000;
+  color: #fff;
+  font-size: 0.8rem;
+}
+
+/* White header background + black text 
+   plus sticky 
+*/
+.apartmentTable thead th {
+  position: sticky;
+  top: 0;
+  background-color: #fff !important;
+  color: #000 !important;
+  z-index: 2; /* so it stays above scrolled rows */
+}
+
+/* Cell styling */
+.apartmentTable th,
+.apartmentTable td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #444;
+}
+
+.apartmentTable th {
+  font-weight: 600;
+}
+
+.apartmentTable tr:hover {
+  background-color: #222;
+}
+
+/* 
+   SECOND TABLE: vertically infinite in a container
+   Also push it even further below with margin-top 
+*/
+.secondTableSection {
+  margin-top: 100px; /* user scrolls further to see this second table */
+  padding: 10rem;
+  font-size: 0.8rem;
+}
+
+.secondTableSection h2 {
+  font-size: 1.5rem;
+  font-weight: 200; /* or 700, etc. */
+  margin-bottom: 1.5rem;
+}
+
+/* Example container with vertical scroll (no perimeter border) */
+.verticalScrollWrap {
+  max-height: 800px; 
+  overflow-y: auto; 
+}
+
+.secondProjectTable {
+  table-layout: auto;
+  width: 100%; 
+  white-space: nowrap;
+  border-collapse: collapse;
+  background-color: #000;
+  color: #fff;
+}
+
+/* White header background + black text 
+   plus sticky 
+*/
+.secondProjectTable thead th {
+  position: sticky;
+  top: 0;
+  background-color: #fff !important;
+  color: #000 !important;
+  z-index: 2;
+}
+
+/* Cell styling */
+.secondProjectTable th,
+.secondProjectTable td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #444;
+}
+
+.secondProjectTable th {
+  font-weight: 600;
+}
+
+.secondProjectTable tr:hover {
+  background-color: #222;
+}
+
+/* Hide the "Scroll to ChatGPT" button */
+.invisibleChatGPTBtn {
+  display: none;
+}
+
+/* 
+   The ~10-row container 
+   ~440px might fit about 10 rows + header 
+*/
+.tenRowScrollContainer {
+  max-height: 440px;
+  overflow-y: auto;
+  margin-bottom: 2rem;
+}
+
+/* -- Fade in with no vertical movement -- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in-card {
+  animation: fadeIn 0.6s ease forwards;
+}

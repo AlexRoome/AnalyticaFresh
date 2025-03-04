@@ -1,0 +1,819 @@
+/* ColourScheme.css */
+
+/*
+   4 Light Greys
+*/
+:root {
+  --gray-100: #f7f7f8;  /* Lightest Grey */
+  --gray-200: #1f2022;  /* Updated to RGB(31, 32, 34) */
+  --gray-300: #d2d2d2;
+  --gray-400: #d1d1d1;  /* Darkest of the "light" greys - increased brightness by 25% from #b4b4b4 */
+  --gray-500: #7a7a7a;  /* Darkest of the "light" greys - increased brightness by 25% from #505050 */
+  --gray-600: #323232;  /* Darkest of the "light" greys */
+  --gray-700: #282828;  /* Darkest of the "light" greys */
+  
+  /* Black & White */
+  --black: #000000;
+  --white: #ffffff;
+  --red: #ff0000;
+  --red-hover: #a01313;
+  --blue: #0055ff; 
+  --green: #3bc971; /* Updated to a richer green */
+  
+
+  /* Highlight Color (Light & Dark) */
+  --highlight-light: #54d100; /* Light Blue */
+  --highlight-dark:  #378a00; /* Darker Blue */
+}
+
+/* Page Title Styles - Match with Settings in nav bar */
+.page-title,
+.managementgrid-title,
+.management-page-title,
+div[class*="page-title"],
+div[class*="title-container"] > h1,
+div[class*="title-container"] > h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--gray-600);
+}
+
+/* Dark mode specific styles for page title */
+html.dark-mode .page-title,
+html.dark-mode .managementgrid-title,
+html.dark-mode .management-page-title,
+html.dark-mode div[class*="page-title"],
+html.dark-mode div[class*="title-container"] > h1,
+html.dark-mode div[class*="title-container"] > h2 {
+  color: var(--gray-300) !important;
+  -webkit-text-fill-color: var(--gray-300) !important;
+}
+
+/* CRITICAL OVERRIDE: Force white text on black rows in light mode */
+html:not(.dark-mode) .ag-theme-alpine [role="row"][aria-rowindex][style*="background"], 
+html:not(.dark-mode) .ag-theme-alpine .ag-row.headingRow, 
+html:not(.dark-mode) .ag-theme-alpine .parent-row,
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background-color: black"],
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Professional Fees")),
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Statutory Fees")) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  fill: #ffffff !important; /* For SVG text */
+  stroke: #ffffff !important; /* For SVG outlines */
+  background-color: #000000 !important;
+}
+
+html:not(.dark-mode) .ag-theme-alpine [role="row"][aria-rowindex][style*="background"] .ag-cell, 
+html:not(.dark-mode) .ag-theme-alpine .ag-row.headingRow .ag-cell, 
+html:not(.dark-mode) .ag-theme-alpine .parent-row .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background-color: black"] .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Professional Fees")) .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Statutory Fees")) .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Professional Fees")) .ag-cell *,
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Statutory Fees")) .ag-cell * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  fill: #ffffff !important; /* For SVG text */
+  stroke: #ffffff !important; /* For SVG outlines */
+}
+
+/* Special override for possible span elements */
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background-color: black"] .ag-cell span,
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Professional Fees")) .ag-cell span,
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Statutory Fees")) .ag-cell span,
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Professional Fees")) .ag-cell div,
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Statutory Fees")) .ag-cell div {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Aggressive approach for possible cell renderers */
+html:not(.dark-mode) .ag-theme-alpine .ag-cell-wrapper, 
+html:not(.dark-mode) .ag-theme-alpine .ag-cell-value, 
+html:not(.dark-mode) .ag-theme-alpine .ag-react-container,
+html:not(.dark-mode) .ag-theme-alpine .ag-cell-inline-editing {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+/* Dark mode theme */
+html.dark-mode {
+  --tableContainer-bg: var(--gray-200); 
+  --tableContainerWhite-bg: var(--gray-200); /* Ensure the white container is dark gray in dark mode */
+  --text-color: var(--gray-300);
+  --background-color: var(--black);
+}
+
+/* Light mode (default) */
+html:not(.dark-mode) {
+  --tableContainer-bg: var(--gray-200);
+  --tableContainerWhite-bg: var(--white);
+  --text-color: var(--gray-600);
+  --background-color: var(--white);
+}
+
+/* Force sidebar colors to stay consistent regardless of theme */
+.sidebarMain, .sidebarTopLink, .sidebarTopLinkIcon, .sidebar-dropdownHeader {
+  color: var(--gray-300) !important;
+}
+
+/* Apply transitions to all potential hover targets */
+.sidebarTopLink,
+.sidebarTopLinkIcon,
+.sidebar-dropdownHeader,
+.sidebarMain div[style*="cursor: pointer"],
+.sidebarMain div[style*="padding: 1rem"] div[style*="cursor: pointer"],
+.sidebar-nav-item {
+  transition: color 0.7s ease-in-out !important;
+}
+
+/* Direct targeting for the navigation items with class */
+.sidebar-nav-item {
+  color: var(--gray-300) !important;
+  transition: color 0.7s ease-in-out !important;
+}
+
+.sidebar-nav-item:hover {
+  color: var(--gray-100) !important;
+}
+
+/* Override the default sidebar hover behavior in PageStyles.css */
+.sidebarTopLink:hover {
+  color: var(--gray-100) !important;
+}
+
+/* Override the default sidebar hover behavior in PageStyles.css */
+.sidebarTopLink:hover .sidebarTopLinkIcon {
+  color: var(--gray-100) !important;
+  transition: color 0.7s ease-in-out !important;
+}
+
+/* For the clickable menu items in the sidebar */
+.sidebarMain div[style*="cursor: pointer"]:hover {
+  color: var(--gray-100) !important;
+}
+
+/* Dynamic styles for container backgrounds */
+.tableContainer {
+  background-color: var(--tableContainer-bg) !important;
+  color: var(--text-color) !important;
+}
+
+.tableContainerWhite {
+  background-color: var(--tableContainerWhite-bg) !important;
+  color: var(--text-color) !important;
+}
+
+/* Adding more specific styling for SwipeableViews containers */
+html.dark-mode .tableContainerWhite,
+html.dark-mode div.tableContainerWhite {
+  background-color: var(--gray-200) !important;
+  color: var(--text-color) !important;
+}
+
+/* Ensure AG Grid wrappers don't override our background colors */
+html.dark-mode .ag-theme-alpine,
+html.dark-mode .ag-theme-alpine .ag-root-wrapper,
+html.dark-mode .ag-theme-alpine .ag-root {
+  background-color: var(--gray-200) !important;
+}
+
+/* Set grid row child items text color to gray-300 in dark mode */
+html.dark-mode .ag-theme-alpine .ag-row:not(.headingRow):not(.totalRow) {
+  color: var(--gray-300) !important;
+}
+
+/* Set forecast cell values to gray-300 in dark mode */
+html.dark-mode .ag-theme-alpine .forecast-cell {
+  color: var(--gray-300) !important;
+}
+
+/* Change text color from gray-500 to gray-600 in light theme */
+html:not(.dark-mode) .ag-theme-alpine .ag-row:not(.headingRow):not(.totalRow):not([style*="background-color: black"]):not([style*="background-color: rgb(0, 0, 0)"]):not([style*="background: rgb(0, 0, 0)"]) {
+  color: var(--gray-600) !important;
+}
+
+/* ALWAYS ensure black background rows have white text in light theme - highest priority */
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background-color: black"],
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background-color: rgb(0, 0, 0)"],
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background: rgb(0, 0, 0)"],
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background: black"] {
+  color: white !important;
+  -webkit-text-fill-color: white !important;
+}
+
+/* Target the specific DIV inside cells based on the screenshot */
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background-color: black"] .ag-cell div,
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background-color: rgb(0, 0, 0)"] .ag-cell div,
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background: rgb(0, 0, 0)"] .ag-cell div,
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background: black"] .ag-cell div {
+  color: white !important;
+  -webkit-text-fill-color: white !important;
+}
+
+/* Change forecast cell values from gray-500 to gray-600 in light theme */
+html:not(.dark-mode) .ag-theme-alpine .forecast-cell {
+  color: var(--gray-600) !important;
+}
+
+/* Ensure parent row headers have white text in light theme */
+html:not(.dark-mode) .ag-theme-alpine .headingRow,
+html:not(.dark-mode) .ag-theme-alpine .headingRow .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row.headingRow,
+html:not(.dark-mode) .ag-theme-alpine .ag-row.headingRow .ag-cell {
+  color: var(--white) !important;
+  background-color: black !important;
+}
+
+/* Additional rule to ensure parent category rows have white text in light theme */
+html:not(.dark-mode) .ag-theme-alpine .ag-row.parent-row,
+html:not(.dark-mode) .ag-theme-alpine .ag-row.parent-row .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .parent-category-row,
+html:not(.dark-mode) .ag-theme-alpine .parent-category-row .ag-cell {
+  color: var(--white) !important;
+  background-color: black !important;
+}
+
+/* Target specific parent header rows by content in light theme */
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Construction Costs")),
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Contingency")),
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Professional Fees")),
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Land Acquisition Costs")),
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Land Purchase Cost")),
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Statutory Fees")),
+html:not(.dark-mode) .ag-theme-alpine .headingRow,
+html:not(.dark-mode) .ag-theme-alpine .parent-row,
+html:not(.dark-mode) .ag-theme-alpine .parent-category-row,
+html:not(.dark-mode) .ag-theme-alpine .ag-row.parent-row,
+html:not(.dark-mode) .ag-theme-alpine .ag-row.parent-category-row,
+html:not(.dark-mode) .ag-theme-alpine .ag-row.headingRow {
+  color: #ffffff !important;
+  background-color: black !important;
+  -webkit-text-fill-color: #ffffff !important; /* Force text fill color */
+  text-shadow: none !important; /* Remove any text shadows */
+}
+
+/* Ensure cells within parent rows also have white text */
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Construction Costs")) .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Contingency")) .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Professional Fees")) .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Land Acquisition Costs")) .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Land Purchase Cost")) .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row:has(.ag-cell:contains("Statutory Fees")) .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .headingRow .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .parent-row .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .parent-category-row .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row.parent-row .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row.parent-category-row .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row.headingRow .ag-cell {
+  color: #ffffff !important;
+  background-color: black !important;
+  -webkit-text-fill-color: #ffffff !important; /* Force text fill color */
+  text-shadow: none !important; /* Remove any text shadows */
+}
+
+/* Ensure parent divs inside cells also have white text */
+html:not(.dark-mode) .ag-theme-alpine .headingRow .ag-cell div,
+html:not(.dark-mode) .ag-theme-alpine .headingRow .ag-cell > div,
+html:not(.dark-mode) .ag-theme-alpine .parent-row .ag-cell div,
+html:not(.dark-mode) .ag-theme-alpine .parent-row .ag-cell > div,
+html:not(.dark-mode) .ag-theme-alpine .parent-category-row .ag-cell div,
+html:not(.dark-mode) .ag-theme-alpine .parent-category-row .ag-cell > div,
+html:not(.dark-mode) .ag-theme-alpine .ag-row.parent-row .ag-cell div,
+html:not(.dark-mode) .ag-theme-alpine .ag-row.parent-row .ag-cell > div,
+html:not(.dark-mode) .ag-theme-alpine .ag-row.parent-category-row .ag-cell div,
+html:not(.dark-mode) .ag-theme-alpine .ag-row.parent-category-row .ag-cell > div,
+html:not(.dark-mode) .ag-theme-alpine .ag-row.headingRow .ag-cell div,
+html:not(.dark-mode) .ag-theme-alpine .ag-row.headingRow .ag-cell > div {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Specifically target black background headers in light theme */
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background-color: rgb(0, 0, 0)"],
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background-color: black"],
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background-color:#000"],
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background: black"],
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background:#000"] {
+  color: var(--white) !important;
+}
+
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background-color: rgb(0, 0, 0)"] .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background-color: black"] .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background-color:#000"] .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background: black"] .ag-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background:#000"] .ag-cell {
+  color: var(--white) !important;
+}
+
+/* Additional blanket rule to ensure all black background cells have white text */
+html:not(.dark-mode) .ag-theme-alpine .ag-cell[style*="background-color: rgb(0, 0, 0)"],
+html:not(.dark-mode) .ag-theme-alpine .ag-cell[style*="background-color: black"],
+html:not(.dark-mode) .ag-theme-alpine .ag-cell[style*="background-color:#000"],
+html:not(.dark-mode) .ag-theme-alpine .ag-cell[style*="background: black"],
+html:not(.dark-mode) .ag-theme-alpine .ag-cell[style*="background:#000"] {
+  color: var(--white) !important;
+}
+
+/* DIRECT TEXT TARGETING: Force any text containing these key phrases to be white */
+html:not(.dark-mode) div:contains("Land Purchase Cost"),
+html:not(.dark-mode) div:contains("Construction Costs"),
+html:not(.dark-mode) div:contains("Contingency"),
+html:not(.dark-mode) div:contains("Professional Fees"),
+html:not(.dark-mode) div:contains("Statutory Fees"),
+html:not(.dark-mode) div:contains("Land Acquisition Costs") {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Target specifically the ag-cell text content */
+html:not(.dark-mode) .ag-theme-alpine .ag-row .ag-cell div,
+html:not(.dark-mode) .ag-theme-alpine .ag-row .ag-cell > div {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+/* Target rows with black background */
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background: rgb(0, 0, 0)"] div,
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background-color: rgb(0, 0, 0)"] div,
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background-color: #000000"] div,
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background-color: black"] div {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Example usage */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Highlights */
+.myHighlight {
+  background-color: var(--highlight-light);
+  color: var(--black);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.myHighlightDark {
+  background-color: var(--highlight-dark);
+  color: var(--white);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+/* Slightly darker background panel */
+.panel {
+  background-color: var(--gray-600);
+  padding: 1rem;
+  border: 1px solid var(--gray-300);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/* Reset default browser padding/margins */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* A simple global font & background */
+html,
+body {
+  font-family: Helvetica, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  height: 100%;
+  width: 100%;
+}
+
+/* The #root container must also be 100% 
+   so Layout can fill the entire window. */
+#root {
+  height: 100%;
+  width: 100%;
+  /* Optionally: display flex 
+     if you want #root itself controlling layout. */
+}
+
+/* Optionally style some basic elements */
+h1,
+h2,
+h3 {
+  margin-bottom: 0.0rem;
+}
+p {
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.dashboardBrand {
+  color: var(--white) !important;
+}
+
+.searchIcon {
+  color: var(--white) !important; /* Ensures the icon remains white */
+}
+
+
+.ag-theme-alpine .ag-select-cell-editor,
+.ag-theme-alpine .ag-select-cell-editor .ag-input-field-input,
+.ag-theme-alpine .ag-list-item {
+  color: #000 !important;
+}
+
+/* FINAL OVERRIDE - This is the absolute last rule and should take precedence over everything else */
+html:not(.dark-mode) div[style*="background-color: rgb(0, 0, 0)"] div:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) div[style*="background: rgb(0, 0, 0)"] div:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) div[style*="background-color: black"] div:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-row[style*="background-color: rgb(0, 0, 0)"] *:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-row[style*="background: rgb(0, 0, 0)"] *:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-row[style*="background-color: black"] *:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-row[style*="background-color: #000000"] *:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-theme-alpine [style*="background-color: black"] *:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-theme-alpine .ag-row[style*="background-color: black"] .ag-cell div:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-theme-alpine .ag-row.headingRow .ag-cell div:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-theme-alpine div[style*="background-color: black"] div:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-theme-alpine .ag-row.parent-row .ag-cell *:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-theme-alpine .ag-row.parent-row *:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-theme-alpine .ag-row.parent-category-row .ag-cell *:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-theme-alpine .ag-row.parent-category-row *:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-theme-alpine .parent-row .ag-cell *:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-theme-alpine .parent-row *:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-theme-alpine .parent-category-row .ag-cell *:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-theme-alpine .parent-category-row *:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-theme-alpine .ag-row[role="row"].parent-row *:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-theme-alpine [row-index][style*="background-color: black"] *:not(.manual-override-cell):not(.manual-override-cell *),
+html:not(.dark-mode) .ag-theme-alpine [role="row"][style*="background-color: black"] *:not(.manual-override-cell):not(.manual-override-cell *) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Special styles preservation for custom color classes */
+:global(.ag-theme-alpine) :global(.manual-override-cell) {
+  color: orange !important;
+  font-weight: 400;
+}
+
+/* Special case for actual cost cells in green */
+html:not(.dark-mode) .ag-theme-alpine .ag-cell[style*="color: green"],
+html:not(.dark-mode) .ag-theme-alpine .ag-cell[style*="color:green"] {
+  color: var(--green) !important;
+  -webkit-text-fill-color: var(--green) !important;
+}
+
+/* ABSOLUTE FINAL OVERRIDE - HIGHEST SPECIFICITY RULES FOR SPECIAL COLORS */
+html:not(.dark-mode) .ag-theme-alpine .ag-row .ag-cell.manual-override-cell,
+html:not(.dark-mode) .ag-theme-alpine .ag-row .ag-cell.manual-override-cell *,
+html:not(.dark-mode) .ag-theme-alpine[class] .ag-row[class] .ag-cell.manual-override-cell[class],
+html:not(.dark-mode) .ag-theme-alpine[class] [role="row"] [role="gridcell"].manual-override-cell,
+html:not(.dark-mode) .ag-theme-alpine[class] [role="row"] [role="gridcell"].manual-override-cell *,
+.manual-override-cell,
+.manual-override-cell *,
+div.manual-override-cell,
+[class].manual-override-cell {
+  color: orange !important;
+  -webkit-text-fill-color: orange !important;
+  fill: orange !important;
+  text-shadow: none !important;
+}
+
+/* ABSOLUTE MAX SPECIFICITY - Special rules for parent rows */
+html:not(.dark-mode) .ag-theme-alpine .ag-center-cols-container .ag-row.parent-row,
+html:not(.dark-mode) .ag-theme-alpine .ag-center-cols-container .parent-row, 
+html:not(.dark-mode) .ag-theme-alpine .ag-center-cols-container .parent-category-row,
+html:not(.dark-mode) .ag-theme-alpine .ag-center-cols-container [role="row"].parent-row,
+html:not(.dark-mode) .ag-theme-alpine .ag-center-cols-container [role="row"][style*="background-color: black"],
+html:not(.dark-mode) .ag-theme-alpine .ag-center-cols-container [role="row"][style*="background: black"],
+html:not(.dark-mode) .ag-theme-alpine [class*="ag-center-cols"] .parent-row,
+html:not(.dark-mode) .ag-theme-alpine [class*="ag-center-cols"] .parent-category-row,
+html:not(.dark-mode) .ag-theme-alpine [class*="ag-center-cols"] .ag-row.parent-row,
+html:not(.dark-mode) .ag-theme-alpine [class*="ag-center-cols"] .ag-row.parent-category-row {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+  background-color: black !important;
+}
+
+html:not(.dark-mode) .ag-theme-alpine .ag-center-cols-container .ag-row.parent-row *,
+html:not(.dark-mode) .ag-theme-alpine .ag-center-cols-container .parent-row *, 
+html:not(.dark-mode) .ag-theme-alpine .ag-center-cols-container .parent-category-row *,
+html:not(.dark-mode) .ag-theme-alpine .ag-center-cols-container [role="row"].parent-row *,
+html:not(.dark-mode) .ag-theme-alpine .ag-center-cols-container [role="row"][style*="background-color: black"] *,
+html:not(.dark-mode) .ag-theme-alpine .ag-center-cols-container [role="row"][style*="background: black"] *,
+html:not(.dark-mode) .ag-theme-alpine [class*="ag-center-cols"] .parent-row *,
+html:not(.dark-mode) .ag-theme-alpine [class*="ag-center-cols"] .parent-category-row *,
+html:not(.dark-mode) .ag-theme-alpine [class*="ag-center-cols"] .ag-row.parent-row *,
+html:not(.dark-mode) .ag-theme-alpine [class*="ag-center-cols"] .ag-row.parent-category-row * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Target the actual rendered content in parent rows */
+html:not(.dark-mode) .ag-row-level-0.parent-row .ag-cell-value,
+html:not(.dark-mode) .ag-row.parent-row .ag-cell-value,
+html:not(.dark-mode) .parent-row .ag-cell-value,
+html:not(.dark-mode) .parent-category-row .ag-cell-value,
+html:not(.dark-mode) [class].parent-row [class].ag-cell-value,
+html:not(.dark-mode) .ag-theme-alpine .ag-row[row-id*="parent"] .ag-cell-value,
+html:not(.dark-mode) .ag-theme-alpine [row-id*="parent"] .ag-cell-value {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Make header rows use the same gray-300 color in dark mode */
+html.dark-mode .ag-theme-alpine .headingRow,
+html.dark-mode .ag-theme-alpine .ag-row.headingRow,
+html.dark-mode .ag-theme-alpine .parent-row,
+html.dark-mode .ag-theme-alpine .parent-category-row {
+  color: var(--gray-300) !important;
+  -webkit-text-fill-color: var(--gray-300) !important;
+  background-color: var(--gray-200) !important; /* Set background to gray-200 */
+}
+
+/* Ensure cell content inside header rows also uses gray-300 in dark mode */
+html.dark-mode .ag-theme-alpine .headingRow .ag-cell,
+html.dark-mode .ag-theme-alpine .ag-row.headingRow .ag-cell,
+html.dark-mode .ag-theme-alpine .parent-row .ag-cell,
+html.dark-mode .ag-theme-alpine .parent-category-row .ag-cell,
+html.dark-mode .ag-theme-alpine .ag-row.parent-row .ag-cell,
+html.dark-mode .ag-theme-alpine .ag-row.parent-category-row .ag-cell {
+  color: var(--gray-300) !important;
+  -webkit-text-fill-color: var(--gray-300) !important;
+  background-color: var(--gray-200) !important; /* Set background to gray-200 */
+}
+
+/* Additional high-specificity rules for dark mode header rows */
+html.dark-mode .ag-theme-alpine .ag-center-cols-container .ag-row.headingRow,
+html.dark-mode .ag-theme-alpine .ag-center-cols-container .headingRow,
+html.dark-mode .ag-theme-alpine .ag-center-cols-container .parent-row,
+html.dark-mode .ag-theme-alpine .ag-center-cols-container .parent-category-row,
+html.dark-mode .ag-theme-alpine .ag-center-cols-container [role="row"].headingRow,
+html.dark-mode .ag-theme-alpine .ag-center-cols-container [role="row"].parent-row {
+  background-color: var(--gray-200) !important;
+}
+
+/* Target AG Grid header elements in dark mode */
+html.dark-mode .ag-theme-alpine .ag-header,
+html.dark-mode .ag-theme-alpine .ag-header-container,
+html.dark-mode .ag-theme-alpine .ag-header-cell,
+html.dark-mode .ag-theme-alpine .ag-header-group-cell,
+html.dark-mode .ag-theme-alpine .ag-header-row {
+  background-color: #1f2022 !important;
+  color: #d2d2d2 !important;
+}
+
+/* Target header labels specifically - using direct hex values */
+html.dark-mode .ag-theme-alpine .ag-header-cell-label,
+html.dark-mode .ag-theme-alpine .ag-header-group-cell-label {
+  color: #d2d2d2 !important;
+  -webkit-text-fill-color: #d2d2d2 !important;
+  background-color: #1f2022 !important;
+}
+
+/* Ensure all elements within header cells use the correct colors */
+html.dark-mode .ag-theme-alpine .ag-header-cell *,
+html.dark-mode .ag-theme-alpine .ag-header-cell span,
+html.dark-mode .ag-theme-alpine .ag-header-cell div {
+  color: #d2d2d2 !important;
+  -webkit-text-fill-color: #d2d2d2 !important;
+  background-color: #1f2022 !important;
+}
+
+/* Target div.ag-header-cell-label specifically with maximum specificity */
+html.dark-mode .ag-theme-alpine div.ag-header-cell-label,
+html.dark-mode .ag-theme-alpine div.ag-header-cell-label span,
+html.dark-mode .ag-theme-alpine div.ag-header-cell-label div,
+html.dark-mode .ag-theme-alpine div.ag-header-cell-text {
+  color: #d2d2d2 !important;
+  -webkit-text-fill-color: #d2d2d2 !important;
+  background-color: #1f2022 !important;
+  text-shadow: none !important;
+}
+
+/* MAXIMUM specificity rules for management grid headers */
+html.dark-mode .ag-theme-alpine .ag-header-viewport .ag-header-container .ag-header-row .ag-header-cell .ag-header-cell-comp-wrapper {
+  color: #d2d2d2 !important;
+  -webkit-text-fill-color: #d2d2d2 !important;
+}
+
+html.dark-mode .ag-theme-alpine .ag-header-viewport .ag-header-container .ag-header-row .ag-header-cell * {
+  color: #d2d2d2 !important;
+  -webkit-text-fill-color: #d2d2d2 !important;
+}
+
+/* CRITICAL: Direct style for management grid headers in dark mode - match with the sidebar "Settings" text color */
+html.dark-mode .ag-theme-alpine .ag-header-cell-text,
+html.dark-mode .ag-theme-alpine .management-grid-header,
+html.dark-mode .ag-theme-alpine .ag-header-group-cell-label,
+html.dark-mode .ag-theme-alpine .ag-header-cell-comp-wrapper,
+html.dark-mode .ag-theme-alpine .ag-header-cell .ag-cell-label-container,
+html.dark-mode .ag-theme-alpine .ag-row[row-id*="title"],
+html.dark-mode .ag-theme-alpine .ag-grid-management-title,
+html.dark-mode .ag-theme-alpine div.ag-header-cell-text {
+  color: var(--gray-300) !important;
+  -webkit-text-fill-color: var(--gray-300) !important;
+  text-shadow: none !important;
+  background-color: #1f2022 !important;
+  border-color: transparent !important;
+  font-family: inherit !important;
+}
+
+/* Ensure consistent styling matching sidebar navigation elements */
+html.dark-mode .ag-theme-alpine .ag-header-cell * {
+  color: var(--gray-300) !important;
+  -webkit-text-fill-color: var(--gray-300) !important;
+  fill: var(--gray-300) !important;
+  stroke: none !important;
+}
+
+/* Match specific management grid header style to sidebar - HIGHEST PRIORITY */
+html.dark-mode .ag-theme-alpine[class] .ag-header-cell[class] .ag-header-cell-text[class],
+html.dark-mode .ag-theme-alpine[role] .ag-header[role] .ag-header-cell[role] .ag-header-cell-text[role] {
+  color: var(--gray-300) !important;
+  -webkit-text-fill-color: var(--gray-300) !important;
+  opacity: 1 !important;
+}
+
+/* Specific Title Style - Limited to just the title element */
+.tableContainer:first-of-type > div:first-of-type {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--gray-600);
+}
+
+/* Dark mode version */
+html.dark-mode .tableContainer:first-of-type > div:first-of-type {
+  color: var(--gray-300) !important;
+  -webkit-text-fill-color: var(--gray-300) !important;
+}
+
+/* DIRECT Targeting of the h2.headingTitle element */
+h2.headingTitle {
+  font-size: 13px;
+  font-family: Helvetica, sans-serif;
+  font-weight: normal;
+  color: var(--gray-600);
+  margin: 0px 0px 16px;
+}
+
+/* Dark mode specific styling for h2.headingTitle */
+html.dark-mode h2.headingTitle {
+  color: #d2d2d2 !important;
+  -webkit-text-fill-color: #d2d2d2 !important;
+}
+
+/* Fix for feasibility grid header text inconsistency in columns 1 and 2 */
+html.dark-mode .ag-theme-alpine .ag-header-row:first-child .ag-header-cell:nth-child(1) .ag-header-cell-text,
+html.dark-mode .ag-theme-alpine .ag-header-row:first-child .ag-header-cell:nth-child(2) .ag-header-cell-text,
+html.dark-mode .ag-theme-alpine .ag-header-row:first-child .ag-header-cell:nth-child(1) *,
+html.dark-mode .ag-theme-alpine .ag-header-row:first-child .ag-header-cell:nth-child(2) * {
+  color: #d2d2d2 !important;
+  -webkit-text-fill-color: #d2d2d2 !important;
+}
+
+/* Fix for all cashflow header cells in the top row to have consistent color */
+html.dark-mode .ag-theme-alpine .ag-header-row:first-child .ag-header-cell .ag-header-cell-text,
+html.dark-mode .ag-theme-alpine .ag-header-row:first-child .ag-header-cell *,
+html.dark-mode .ag-theme-alpine .ag-header-row:first-child .ag-header-cell-label,
+html.dark-mode .ag-theme-alpine .ag-header-row:first-child select,
+html.dark-mode .ag-theme-alpine .ag-header-row:first-child svg {
+  color: #d2d2d2 !important;
+  -webkit-text-fill-color: #d2d2d2 !important;
+  fill: #d2d2d2 !important;
+}
+
+/* Invoices grid styling in dark mode - match management grid styling */
+html.dark-mode .invoices-grid .ag-theme-alpine,
+html.dark-mode .invoices-grid .ag-theme-alpine .ag-root-wrapper,
+html.dark-mode .invoices-grid .ag-theme-alpine .ag-root,
+html.dark-mode .invoices-page .ag-theme-alpine,
+html.dark-mode .invoices-page .ag-theme-alpine .ag-root-wrapper,
+html.dark-mode .invoices-page .ag-theme-alpine .ag-root {
+  background-color: var(--gray-200) !important;
+}
+
+/* Fix text color in invoices grid to match management grid */
+html.dark-mode .invoices-grid .ag-theme-alpine .ag-row:not(.headingRow):not(.totalRow),
+html.dark-mode .invoices-page .ag-theme-alpine .ag-row:not(.headingRow):not(.totalRow) {
+  color: var(--gray-300) !important;
+}
+
+/* Fix header styling for invoices grid in dark mode */
+html.dark-mode .invoices-grid .ag-theme-alpine .ag-header,
+html.dark-mode .invoices-grid .ag-theme-alpine .ag-header-container,
+html.dark-mode .invoices-grid .ag-theme-alpine .ag-header-cell,
+html.dark-mode .invoices-page .ag-theme-alpine .ag-header,
+html.dark-mode .invoices-page .ag-theme-alpine .ag-header-container,
+html.dark-mode .invoices-page .ag-theme-alpine .ag-header-cell {
+  background-color: #1f2022 !important;
+  color: #d2d2d2 !important;
+}
+
+/* Ensure invoices grid cell content has correct color */
+html.dark-mode .invoices-grid .ag-theme-alpine .ag-cell,
+html.dark-mode .invoices-grid .ag-theme-alpine .ag-cell *,
+html.dark-mode .invoices-page .ag-theme-alpine .ag-cell,
+html.dark-mode .invoices-page .ag-theme-alpine .ag-cell * {
+  color: var(--gray-300) !important;
+  -webkit-text-fill-color: var(--gray-300) !important;
+}
+
+/* More aggressive invoice grid styling for dark mode */
+html.dark-mode .ag-theme-alpine[class*="invoice"],
+html.dark-mode div[class*="invoice"] .ag-theme-alpine,
+html.dark-mode div[id*="invoice"] .ag-theme-alpine,
+html.dark-mode [class*="invoice"] .ag-theme-alpine,
+html.dark-mode .invoices-container .ag-theme-alpine,
+html.dark-mode #invoices-grid .ag-theme-alpine,
+html.dark-mode .invoice-grid .ag-theme-alpine,
+html.dark-mode .invoice-table .ag-theme-alpine {
+  background-color: var(--gray-200) !important;
+}
+
+/* Target core ag-grid elements to ensure proper background */
+html.dark-mode [class*="invoice"] .ag-theme-alpine .ag-root-wrapper,
+html.dark-mode [class*="invoice"] .ag-theme-alpine .ag-root,
+html.dark-mode [class*="invoice"] .ag-theme-alpine .ag-body-viewport,
+html.dark-mode [class*="invoice"] .ag-theme-alpine .ag-center-cols-container,
+html.dark-mode [id*="invoice"] .ag-theme-alpine .ag-root-wrapper,
+html.dark-mode [id*="invoice"] .ag-theme-alpine .ag-root,
+html.dark-mode [id*="invoice"] .ag-theme-alpine .ag-body-viewport,
+html.dark-mode [id*="invoice"] .ag-theme-alpine .ag-center-cols-container {
+  background-color: var(--gray-200) !important;
+}
+
+/* Blanket rule for any invoice-related grid in dark mode */
+html.dark-mode div[class*="invoice"] div[class*="ag-"],
+html.dark-mode [id*="invoice"] div[class*="ag-"],
+html.dark-mode [class*="invoice"] div[class*="ag-"] {
+  background-color: var(--gray-200) !important;
+}
+
+/* Ensure rows have proper styling */
+html.dark-mode [class*="invoice"] .ag-theme-alpine .ag-row,
+html.dark-mode [id*="invoice"] .ag-theme-alpine .ag-row {
+  background-color: var(--gray-200) !important;
+  color: var(--gray-300) !important;
+  -webkit-text-fill-color: var(--gray-300) !important;
+}
+
+/* Ensure invoice grid cell content has correct color */
+html.dark-mode [class*="invoice"] .ag-theme-alpine .ag-cell,
+html.dark-mode [class*="invoice"] .ag-theme-alpine .ag-cell *,
+html.dark-mode [id*="invoice"] .ag-theme-alpine .ag-cell,
+html.dark-mode [id*="invoice"] .ag-theme-alpine .ag-cell * {
+  color: var(--gray-300) !important;
+  -webkit-text-fill-color: var(--gray-300) !important;
+}
+
+/* Make sure the entire page container is dark if it contains the invoice grid */
+html.dark-mode [class*="invoice-page"],
+html.dark-mode [id*="invoice-page"],
+html.dark-mode [class*="invoices-page"],
+html.dark-mode [id*="invoices-page"] {
+  background-color: var(--gray-200) !important;
+}
+
+/* DIRECT TARGETING of AgGridReact component */
+html.dark-mode .ag-theme-alpine.ag-theme-alpine-dark,
+html.dark-mode .ag-theme-alpine.ag-theme-alpine-dark .ag-root-wrapper,
+html.dark-mode .ag-theme-alpine.ag-theme-alpine-dark .ag-root,
+html.dark-mode .ag-theme-alpine.ag-theme-alpine-dark .ag-body-viewport,
+html.dark-mode .ag-theme-alpine.ag-theme-alpine-dark .ag-center-cols-container {
+  background-color: var(--gray-200) !important;
+}
+
+/* Specific styling for invoice pages only */
+html.dark-mode div[class*="invoice"] .ag-theme-alpine,
+html.dark-mode div[id*="invoice"] .ag-theme-alpine {
+  background-color: var(--gray-200) !important;
+}
+
+/* Target invoice grid elements */
+html.dark-mode div[class*="invoice"] .ag-theme-alpine .ag-root-wrapper,
+html.dark-mode div[class*="invoice"] .ag-theme-alpine .ag-root,
+html.dark-mode div[id*="invoice"] .ag-theme-alpine .ag-root-wrapper,
+html.dark-mode div[id*="invoice"] .ag-theme-alpine .ag-root {
+  background-color: var(--gray-200) !important;
+}
+
+/* Fix for all cashflow header cells in the top row to have consistent color */
+html.dark-mode .ag-theme-alpine .ag-header-row:first-child .ag-header-cell .ag-header-cell-text,
+html.dark-mode .ag-theme-alpine .ag-header-row:first-child .ag-header-cell *,
+html.dark-mode .ag-theme-alpine .ag-header-row:first-child .ag-header-cell-label,
+html.dark-mode .ag-theme-alpine .ag-header-row:first-child select,
+html.dark-mode .ag-theme-alpine .ag-header-row:first-child svg {
+  color: #d2d2d2 !important;
+  -webkit-text-fill-color: #d2d2d2 !important;
+  fill: #d2d2d2 !important;
+}

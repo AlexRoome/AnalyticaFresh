@@ -1,0 +1,140 @@
+/* Center container text, optional max width, etc. */
+.askChatGPTContainer {
+  text-align: center;
+  max-width: 100%;
+  margin: 10rem; /* This means 10rem on all sides: top, right, bottom, left */
+  /* or margin: 0 10rem; for just left/right spacing */
+}
+
+/* Headings inside the container */
+.askChatGPTContainer h1 {
+  font-size: 3rem;
+  font-weight: 500;
+  margin-bottom: 3rem;
+}
+
+/* The black search bar styling */
+.searchBar {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--gray-200);
+  border-radius: 30px;
+  padding: 1rem 1rem;
+  margin-top: 1rem;
+}
+
+.searchBar textarea {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-top: 1.3rem;
+  width: 30rem;
+  /* The key to allowing it to grow: set height to auto initially. */
+  height: auto;
+  line-height: 1.4;
+  resize: none;
+  overflow-y: hidden;   /* We will auto-grow, so no scrollbars needed */
+}
+
+.searchBar button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  /* Slower hover transition (0.5s) */
+  transition: color 0.5s ease-in-out;
+}
+
+.searchBar button:hover {
+  /* switches icon/text to gray for contrast */
+  color: var(--gray-300);
+}
+
+/* Red border around the conversation area */
+.conversationContainer {
+  border-top: 0.0px solid var(--white);
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  padding: 1rem;  
+  max-height: 60rem; 
+  overflow-y: auto;
+}
+
+/* Individual messages (bubbles) */
+.message {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+/* USER messages: right side, light gray background, white text */
+.message.user {
+  float: right;
+  background-color: var(--gray-200);
+  color: #fff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  max-width: 60%;
+  clear: both; /* ensures next message doesn't wrap beside it */
+  margin-top: 3rem;
+}
+
+/* ASSISTANT messages: full width, darker background, white text */
+.message.assistant {
+  float: none;          /* no float, so it takes full width */
+  width: 100%;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  clear: both;          /* ensures it starts on its own line */
+  text-align: left;
+}
+
+/* ---------------------- */
+/*  Table-Specific Styles */
+/* ---------------------- */
+.conversationContainer table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0; /* space above/below the table */
+}
+
+.conversationContainer th,
+.conversationContainer td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+.conversationContainer th {
+  background-color: #f9f9f9;
+  color: var(--black);
+  font-weight: bold;
+  text-align: left;
+}
+
+/* ---------------------- */
+/* Hide extra lines */
+/* ---------------------- */
+.hiddenText {
+  display: none;
+}
+
+.subheading {
+  margin-bottom: 4rem;
+}
+
+/* Spinner animation (slower: 2s per rotation) */
+.spin {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

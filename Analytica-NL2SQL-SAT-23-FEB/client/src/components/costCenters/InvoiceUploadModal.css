@@ -1,0 +1,258 @@
+/* Overlay: Dark translucent full-screen background */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+/* Modal container */
+.modal {
+  background: var(--gray-600);
+  border-radius: 8px;
+  height: 450px;
+  width: 420px;
+  max-width: 90%;
+  padding: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  position: relative; /* Needed for absolutely positioning the buttons */
+}
+
+/* Title container - aligned to top left */
+.title-container {
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+/* Title text (0.75rem) */
+.title {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+/* Dropzone area (appears when no files are attached) */
+.dropzone {
+  border-radius: 6px;
+  padding: 32px;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropzone-empty-state {
+  /* Additional styling for empty state if desired */
+}
+
+/* Icon in dropzone */
+.icon {
+  font-size: 48px;
+  margin-top: 4rem;
+  margin-bottom: 16px;
+  color: #b9bbbe;
+}
+
+/* Text when dragging files over dropzone (0.625rem) */
+.drag-active-text {
+  margin: 0;
+  margin-top: 2rem;
+  font-size: 0.625rem;
+  color: #fff;
+}
+
+/* Default dropzone text (0.625rem) */
+.drop-text {
+  margin: 0;
+  margin-top: 2rem;
+  font-size: 0.625rem;
+  color: #b9bbbe;
+}
+
+/* "Click to upload" text */
+.click-text {
+  text-decoration: underline;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Attached files list container (appears once files are dropped).
+   Reduced from 280px to 260px to remove one row of height. */
+.attached-files-list {
+  margin-bottom: 16px;
+  overflow-y: auto;
+  max-height: 260px; 
+}
+
+/* Header row for the attached files list */
+.attached-files-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6rem;
+  color: #b9bbbe;
+  padding: 8px 0;
+  border-bottom: 1px solid #414345;
+}
+
+/* Each row for an attached file */
+.attached-file-row {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #414345;
+  font-size: 0.625rem;
+}
+
+/* The file name column */
+.attached-file-name {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 
+   A small wrapper that ensures both spinner & file icon 
+   occupy the same space, so they appear in the same spot.
+*/
+.file-icon-wrapper {
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Spinner/pinwheel for ongoing uploads */
+.file-upload-status {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #414345; /* Outer ring */
+  border-top: 2px solid #fff; /* Spinning color */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  box-sizing: border-box;
+}
+
+/* Keyframes for spinner animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* The uploaded-file icon (example: FaRegFile); same size as spinner */
+.uploaded-file-icon {
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
+  color: #fff; /* Adjust if you want a different color for your file icon */
+}
+
+/* Trash icon button */
+.remove-file-button {
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #fff;
+  margin-left: 8px;
+  transition: filter 0.3s ease;
+}
+
+.remove-file-button:hover {
+  filter: brightness(0.75);
+}
+
+/* Info text container */
+/* We add extra bottom margin so there's 2rem of space above the bottom buttons */
+.info-text-container {
+  text-align: center;
+  margin-bottom: 2rem; /* Provide 2rem gap before the bottom buttons */
+}
+
+/* Info text (0.56rem) */
+.info-text {
+  margin: 0;
+  font-size: 0.56rem;
+  color: #b9bbbe;
+}
+
+/* Buttons container */
+.buttons-container {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 12px;
+}
+
+/* Cancel button (75% size) */
+.cancel-button {
+  background-color: var(--gray-500);
+  border: none;
+  color: #fff;
+  font-size: 0.675rem;
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+/* Attach button (75% size) */
+.attach-button {
+  background-color: var(--gray-500);
+  border: none;
+  color: #fff;
+  font-size: 0.675rem;
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+/* Disabled state for Attach button */
+.attach-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Hover state: Both buttons become 25% darker */
+.cancel-button:hover,
+.attach-button:hover {
+  filter: brightness(0.75);
+}
+
+/* +Add button: full-width row with dashed border for styling */
+.add-invoice-button {
+  background: none;
+  border: 1px dashed #414345;
+  border-radius: 6px;
+  color: #b9bbbe;
+  font-size: 0.625rem;
+  width: 100%;
+  text-align: center;
+  padding: 8px 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px; /* space between + icon and text */
+  transition: filter 0.3s ease;
+  margin-top: 8px;
+}
+
+/* Hover or focus states for the +Add button */
+.add-invoice-button:hover {
+  filter: brightness(1.2);
+}

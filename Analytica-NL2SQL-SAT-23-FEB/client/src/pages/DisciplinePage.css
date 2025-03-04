@@ -1,0 +1,27 @@
+/* DisciplinePage.module.css */
+.headingTitle {
+  color: var(--black);
+  font-size: 1.0rem;
+  margin-bottom: 1rem;
+  margin-left: 1.0rem;
+  padding-top: 1.0rem;
+  padding-bottom: 1.0rem;
+}
+
+
+.agGridWrapperNoHeight {
+  width: 100%;
+  min-height: 500px; /* or some small number to ensure it doesn't collapse */
+  transition: background-color 0.3s ease;
+}
+
+
+
+.ag-theme-alpine .ag-header {
+  background-color: var(--tableContainerWhite-bg) !important;
+}
+
+/* Dark mode override */
+html.dark-mode .ag-theme-alpine .ag-header {
+  background-color: var(--tableContainer-bg) !important;
+}

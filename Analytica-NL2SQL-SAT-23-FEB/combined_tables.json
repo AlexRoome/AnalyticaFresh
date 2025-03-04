@@ -1,0 +1,50 @@
+{
+  "buildingMetrics": [
+    {
+      "projectName": "Project Name 1",
+      "siteArea": 100,
+      "totalApts": 10,
+      "totalStoreys": 1,
+      "nsa": 500,
+      "avgSize": 70,
+      "ratio": "0.50",
+      "commercial": 0,
+      "basement": 300
+    },
+    {
+      "projectName": "Project Name 2",
+      "siteArea": 150,
+      "totalApts": 11,
+      "totalStoreys": 2,
+      "nsa": 520,
+      "avgSize": 71,
+      "ratio": "0.60",
+      "commercial": 80,
+      "basement": 310
+    }
+  ],
+  "costMetrics": [
+    {
+      "item": "Cost Item 1",
+      "col1": "Data A1",
+      "col2": "Data B1",
+      "col3": "Data C1",
+      "col4": "Data D1",
+      "col5": "Data E1",
+      "col6": "Data F1",
+      "col7": "Data G1",
+      "col8": "Data H1"
+    },
+    {
+      "item": "Cost Item 2",
+      "col1": "Data A2",
+      "col2": "Data B2",
+      "col3": "Data C2",
+      "col4": "Data D2",
+      "col5": "Data E2",
+      "col6": "Data F2",
+      "col7": "Data G2",
+      "col8": "Data H2"
+    }
+  ]
+}

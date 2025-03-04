@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Analytica</title>
+
+    <!-- No link to Gant.css here, since it's in src/components and imported in your React code. -->
+
+    <!-- Load dhtmlxgantt-lib.js from /public so Vite doesn't parse it. -->
+    <script src="/dhtmlxgantt-lib.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <!-- React renders inside #root -->
+    <div id="root"></div>
+
+    <!-- Vite bundles your React app from /src/index.tsx -->
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>
