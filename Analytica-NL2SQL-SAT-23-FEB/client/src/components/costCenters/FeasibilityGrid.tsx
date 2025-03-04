@@ -944,7 +944,7 @@ function FeasibilityGridInner({ feasibilityId }: { feasibilityId?: string }) {
           if (isNaN(numericVal) || numericVal === 0) return "";
           return `$${formatWithCommas(numericVal)}`;
         },
-        cellStyle: { textAlign: "right", color: "#ff69b4" },
+        cellStyle: { textAlign: "right", color: "var(--gray-300)" },
       },
     ];
 
